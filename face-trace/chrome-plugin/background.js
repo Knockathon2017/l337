@@ -1,5 +1,6 @@
 window.onload = () => {
   let videoDevice;
+  let intervalId;
 
   navigator.mediaDevices.getUserMedia({ video: true }).then(gotMedia).catch();
 
@@ -13,7 +14,7 @@ window.onload = () => {
     const canvas = document.createElement('canvas');
     canvas2dContext = canvas.getContext('2d');
 
-    window.setInterval(() => {
+    intervalId = window.setInterval(() => {
       if (videoDevice.readyState === 'live') {
         if (video.videoWidth) {
           try {
@@ -32,7 +33,7 @@ window.onload = () => {
       } else {
         console.error('Invalid state error');
       }
-    }, 1000);
+    }, 10000);
 
   }
 
@@ -40,15 +41,34 @@ window.onload = () => {
     var reader = new window.FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function () {
-      base64data = reader.result;
-      console.log(base64data);
-    }
+      base64Data = reader.result.replace('data:image/png;base64,', '');
+      let data = {
+        base64Data,
+        url: 'facebook.com',
+        userId: 'diptii86@gmail.com'
+      }
+      console.log('Posting');
+      postData(data);
+    };
   }
 
   function stopCamera(error) {
     console.error(error);
+    if (intervalId) clearInterval(intervalId);
     if (videoDevice) videoDevice.stop();  // turn off the camera
   }
 
-
+  function postData(data) {
+    $.ajax({
+      method: 'POST',
+      url: 'http://172.16.1.128:8989/v1/traceData/',
+      cache: false,
+      contentType: 'application/json',
+      data: JSON.stringify(data)
+    }).done((response) => {
+      console.log('Response', response)
+    }).fail((error) => {
+      console.error(error);
+    });
+  }
 };

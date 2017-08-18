@@ -6,9 +6,12 @@
   "browser_action": {
     "default_popup": "popup.html"
   },
+  "options_page": "options.html",
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background.js", "scripts/jquery-ajax.js"],
     "persistent": true
   },
-  "permissions": []
+  "permissions": [
+    "http://172.16.1.128:8989/"
+  ]
 }
