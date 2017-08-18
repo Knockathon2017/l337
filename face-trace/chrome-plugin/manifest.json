@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "FaceTrace",
-  "description": "This extension shows a Google Image search result for the current page",
+  "description": "An extension that keeps a check on your emotions",
   "version": "1.0",
   "browser_action": {
     "default_popup": "popup.html"
