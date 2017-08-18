@@ -4,9 +4,9 @@ window.onload = () => {
   navigator.mediaDevices.getUserMedia({ video: true }).then(gotMedia).catch();
 
   function gotMedia(mediaStream) {
-    const _videoStreamTrack = mediaStream.getVideoTracks()[0];
+    const videoDevice = mediaStream.getVideoTracks()[0];
     const video = document.createElement('video');
-    video.src = URL.createObjectURL(new MediaStream([_videoStreamTrack]));
+    video.src = URL.createObjectURL(new MediaStream([videoDevice]));
     video.muted = true;
     video.play();
 
@@ -14,7 +14,7 @@ window.onload = () => {
     canvas2dContext = canvas.getContext('2d');
 
     window.setInterval(() => {
-      if (_videoStreamTrack.readyState === 'live') {
+      if (videoDevice.readyState === 'live') {
         if (video.videoWidth) {
           try {
             canvas.width = video.videoWidth;
@@ -24,22 +24,19 @@ window.onload = () => {
               processPhoto(blob);
             });
           } catch (error) {
-            console.log('Err', error);
-            throw new DOMException('UnknownError');
+            console.error(error);
           }
         } else {
-          console.log('This?');
-          throw new DOMException('UnknownError');
+          console.error('Unknown error');
         }
       } else {
-        throw new DOMException('InvalidStateError');
+        console.error('Invalid state error');
       }
     }, 1000);
 
   }
 
   function processPhoto(blob) {
-    console.log('Blob', blob);
     var reader = new window.FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function () {
