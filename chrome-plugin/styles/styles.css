@@ -7,7 +7,7 @@
 
 body {
   width: 500px;
-  height: 600px;
+  height: 530px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
@@ -195,9 +195,9 @@ body {
 .emotion-meter li .meter-inner {
   width: 0;
   height: 100%;
-  -webkit-transition: width 0.3s linear;
-  -moz-transition: width 0.3s linear;
-  transition: width 0.3s linear;
+  -webkit-transition: width 0.5s linear;
+  -moz-transition: width 0.5s linear;
+  transition: width 0.5s linear;
   background-color: #7a95e6;
   position: absolute;
   left: 0;
