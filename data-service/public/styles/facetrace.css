@@ -65,3 +65,83 @@
     margin-left: 5%;
     display: inline-block;
 }
+.smiley-face-happiness
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/happiness.svg') no-repeat center center / contain;
+}
+
+.smiley-face-contempt
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/contempt.svg') no-repeat center center / contain;
+}
+.smiley-face-disgust
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/disgust.svg') no-repeat center center / contain;
+}
+.smiley-face-fear
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/fear.svg') no-repeat center center / contain;
+}
+.smiley-face-neutral
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/neutral.svg') no-repeat center center / contain;
+}
+.smiley-face-sadness
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/sadness.svg') no-repeat center center / contain;
+}
+.smiley-face-surprise
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/surprise.svg') no-repeat center center / contain;
+}
+.smiley-face-anger
+{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 0;
+    left: 0;
+    background:url('/emoticons/anger.svg') no-repeat center center / contain;
+}
+.body-heading h1{
+    position: relative;
+    width: 100%;
+    height: 110px;
+    line-height: 110px;
+    padding-left: 120px;
+}

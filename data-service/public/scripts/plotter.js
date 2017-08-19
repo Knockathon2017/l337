@@ -1,10 +1,10 @@
 
-$.ajax({url: "http://172.16.1.128:8989/v1/getDataForSplineChart/diptii86@gmail.com/1503092870000/1503110258000.0", success: function(result){
+$.ajax({url: "http://172.16.1.128:8989/v1/getDataForSplineChart/diptii86@gmail.com/1503092870000/1503110258000", success: function(result){
         var data = BasicColumn(result,'day');
         Highcharts.chart('basiccolumn',data );
     }});
 
-$.ajax({url: "http://172.16.1.128:8989/v1/getDataForSplineChart/diptii86@gmail.com/1503092870000/1503110258000.0", success: function(result){
+$.ajax({url: "http://172.16.1.128:8989/v1/getDataForSplineChart/diptii86@gmail.com/1503092870000/1503110258000", success: function(result){
     var data = pieWithLegend(result,'day');
     Highcharts.chart('piewithlegend',data );
 }});
@@ -15,7 +15,7 @@ function BasicColumn(data,intervalType){
     console.log('In BasicColumn');
     //var splitData = SplitIntervals(data,intervalType);
     common.chart.type='column';
-    common.title.text='Weekly Emotion statistics';
+    common.title.text='Emotion Statistics';
     common.subtitle.text='Facetrace';
     common.xAxis.categories=[];
     common.xAxis.crosshair=true;
@@ -35,6 +35,11 @@ function BasicColumn(data,intervalType){
     common.series.push({name:'sadness',data:data.sadness});
     common.series.push({name:'happiness',data:data.happiness});
     common.series.push({name:'anger',data:data.anger});
+    common.series.push({name:'surprise',data:data.surprise});
+    common.series.push({name:'neutral',data:data.neutral});
+    common.series.push({name:'fear',data:data.fear});
+    common.series.push({name:'disgust',data:data.disgust});
+    common.series.push({name:'contempt',data:data.contempt});
     
     return common;
 }
@@ -76,6 +81,21 @@ function pieWithLegend(data, intervalType){
             }, {
                 name: 'Anger',
                 y: _.sum(data.anger)
+            },{
+                name: 'Surprise',
+                y: _.sum(data.surprise)
+            }, {
+                name: 'neutral',
+                y: _.sum(data.neutral)
+            }, {
+                name: 'fear',
+                y: _.sum(data.fear)
+            }, {
+                name: 'contempt',
+                y: _.sum(data.contempt)
+            }, {
+                name: 'disgust',
+                y: _.sum(data.disgust)
             }]
         }];
     return common;

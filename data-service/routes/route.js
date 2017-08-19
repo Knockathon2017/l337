@@ -70,8 +70,8 @@ router.get('/getDataForSplineChart/:userId/:startDate/:endDate', (request, respo
     }
 });
 
-router.get('/summary',(request,response)=>{
-    return response.render('facetrace');
+router.get('/summary/:overallMood',(request,response)=>{
+    return response.render('facetrace',{overallMood:request.params.overallMood});
 });
 
 
