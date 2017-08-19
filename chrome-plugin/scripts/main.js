@@ -1,5 +1,5 @@
 const dateString = new Date().toString();
-const ANALYSIS_BASE_URL = 'http://172.16.1.128:8989';
+const ANALYSIS_BASE_URL = 'http://172.16.1.128:8989/v1/summary';
 const app = new Vue({
   el: '#face-trace',
   data: {
@@ -52,7 +52,7 @@ const app = new Vue({
       });
     },
     openAnanlysisPage() {
-      const analysisUrl = `${ANALYSIS_BASE_URL}?overallMood=${this.overallMood}`;
+      const analysisUrl = `${ANALYSIS_BASE_URL}/${this.overallMood}`;
       chrome.tabs.create({
         url: analysisUrl
       });
