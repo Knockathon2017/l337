@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="styles/slider.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 
@@ -12,22 +13,29 @@
     <div class="content-wrapper">
       <div class="header">
         <h1>Face<span>Trace</span></h1>
-        <div class="date">Today(18 Aug)</div>
+        <div class="date">Today (18 Aug)</div>
+        <div class="toggle-switch">
+          <div class="text">ON</div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
       <div class="emotion-display">
         <div class="emoticon"></div>
         <div class="description">
           <h2>Hey, I think you are happy</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-          from 45 BC, making it over 2000 years old.</p>
+            from 45 BC, making it over 2000 years old.</p>
         </div>
       </div>
+      <ul></ul>
     </div>
     <div class="nav-link">Analyse Report</div>
   </div>
 
   <script src="scripts/vue.js"></script>
-
   <script src="scripts/main.js"></script>
 </body>
 
