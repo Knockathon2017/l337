@@ -11,16 +11,26 @@ const app = new Vue({
       sadness: 0,
       surprise: 0
     },
-    overallMood: ""
+    overallMood: "",
+    shouldTrack: false
   },
+  methods: {
+    toggleTrack: function() {
+      chrome.runtime.sendMessage({
+        type: this.shouldTrack ? 'startCamera' : 'stopCamera'
+      });
+    }
+  }
+});
+
+chrome.storage.local.get('shouldTrack', (response) => {
+  app.shouldTrack = response.shouldTrack;
 });
 
 $.ajax({
   method: 'GET',
   url: 'http://172.16.1.128:8989/v1/getTodayMood/atmarams@exzeo.com',
 }).done((response) => {
-  console.log('Response', response)
   app.moods = response.Moods;
   app.overallMood = response.overAllMood;
-  console.log(app.overallMood);
 });

@@ -19,6 +19,9 @@
   ],
   "permissions": [
     "tabs",
+    "identity",
+    "identity.email",
+    "storage",
     "http://172.16.1.128:8989/"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

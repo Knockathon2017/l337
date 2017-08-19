@@ -16,8 +16,8 @@
         <div class="date">Today (18 Aug)</div>
         <div class="toggle-switch">
           <div class="text">ON</div>
-          <label class="switch">
-            <input type="checkbox" checked>
+          <label class="switch" >
+            <input type="checkbox" v-model="shouldTrack" @change="toggleTrack">
             <span class="slider round"></span>
           </label>
         </div>

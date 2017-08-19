@@ -4,6 +4,7 @@ let currentUrl;
 let videoDevice;
 let video;
 let canvas;
+let userEmail;
 
 function processPhoto(blob) {
   var reader = new window.FileReader();
@@ -13,7 +14,7 @@ function processPhoto(blob) {
     let data = {
       base64Data,
       url: currentUrl,
-      userId: 'akshayc@exzeo.com'
+      userId: userEmail
     }
     postData(data);
   };
@@ -22,7 +23,10 @@ function processPhoto(blob) {
 function stopCamera(error) {
   if (error) console.error(error);
   if (intervalId) clearInterval(intervalId);
-  if (videoDevice) videoDevice.stop();
+  if (videoDevice) {
+    videoDevice.stop();
+    storeTrackingStatus(false);
+  }
 }
 
 function postData(data) {
@@ -40,7 +44,9 @@ function postData(data) {
 }
 
 function startCamera() {
+  getUserDetails();
   navigator.mediaDevices.getUserMedia({ video: true }).then((mediaStream) => {
+    storeTrackingStatus(true);
     videoStream = mediaStream;
     videoDevice = mediaStream.getVideoTracks()[0];
     video = document.createElement('video');
@@ -81,10 +87,33 @@ function getImageBlob() {
   }
 }
 
-chrome.runtime.onMessage.addListener(
-  function (request, sender, sendResponse) {
-    currentUrl = request.url;
-    sendResponse();
+function getUserDetails() {
+  chrome.identity.getProfileUserInfo(function (userInfo) {
+    userEmail = userInfo.email ? userInfo.email : 'testuser@test.com';
   });
+}
 
-startCamera();
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  switch (request.type) {
+    case 'urlFetch':
+      currentUrl = request.url;
+      break;
+
+    case 'startCamera':
+      startCamera();
+      break;
+
+    case 'stopCamera':
+      stopCamera();
+      break;
+
+    default:
+      break;
+  }
+
+  sendResponse();
+});
+
+function storeTrackingStatus(status) {
+    chrome.storage.local.set({ 'shouldTrack': status }, () => {});
+}
