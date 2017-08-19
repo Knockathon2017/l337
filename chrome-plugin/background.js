@@ -115,5 +115,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function storeTrackingStatus(status) {
-    chrome.storage.local.set({ 'shouldTrack': status }, () => {});
+  chrome.storage.local.set({ 'shouldTrack': status }, () => {});
 }

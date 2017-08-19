@@ -12,7 +12,35 @@ const app = new Vue({
       surprise: 0
     },
     overallMood: "",
-    shouldTrack: false
+    shouldTrack: false,
+    messages: {
+      anger: {
+        title: 'Hey, I think you are angry',
+        description: 'They say meditation helps to calm you down. Give it a try maybe?'
+      },
+      contempt: {
+        title: 'You seem to be contempt today',
+        description: 'Lorem Ipsum Dolor Sit Amet'
+      },
+      disgust: {
+        title: 'Are you digsusted with something?',
+        description: 'How about some feel good classics?'
+      },
+      fear: {
+        title: '',
+        description: 'They say meditation helps to calm you down. Give it a try maybe?'
+      },
+      happiness: {
+        title: 'Hey, I think you\'re happy.',
+        description: 'It\'s all the little things in life that makes you happy.'
+      },
+      neutral: 0,
+      sadness: {
+        title: 'Why the blues today?',
+        description: 'Let\'s turn that frown upside down.'
+      },
+      surprise: 0
+    }
   },
   methods: {
     toggleTrack: function() {
@@ -24,6 +52,7 @@ const app = new Vue({
 });
 
 chrome.storage.local.get('shouldTrack', (response) => {
+  console.log('Track', response.shouldTrack);
   app.shouldTrack = response.shouldTrack;
 });
 

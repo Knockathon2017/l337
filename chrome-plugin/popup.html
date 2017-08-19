@@ -15,7 +15,7 @@
         <h1>Face<span>Trace</span></h1>
         <div class="date">Today (18 Aug)</div>
         <div class="toggle-switch">
-          <div class="text">ON</div>
+          <div class="text">{{ shouldTrack ? 'ON' : 'OFF' }}</div>
           <label class="switch" >
             <input type="checkbox" v-model="shouldTrack" @change="toggleTrack">
             <span class="slider round"></span>
@@ -25,9 +25,8 @@
       <div class="emotion-display">
         <div class="emoticon on" v-bind:class="[overallMood]"></div>
         <div class="description">
-          <h2>Hey, I think you are happy</h2>
-          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-            from 45 BC, making it over 2000 years old.</p>
+          <h2>{{ messages[overallMood].title }}</h2>
+          <p>{{ messages[overallMood].description }}</p>
         </div>
       </div>
       <!-- <div class="emotion-display">
