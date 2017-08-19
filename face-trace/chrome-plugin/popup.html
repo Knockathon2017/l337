@@ -23,19 +23,36 @@
         </div>
       </div>
       <div class="emotion-display">
-        <div class="emoticon"></div>
+        <div class="emoticon on" v-bind:class="[overallMood]"></div>
         <div class="description">
           <h2>Hey, I think you are happy</h2>
           <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
             from 45 BC, making it over 2000 years old.</p>
         </div>
       </div>
-      <ul></ul>
+      <!-- <div class="emotion-display">
+        <div class="emoticon off"></div>
+        <div class="description">
+          <p>FaceTrace analyses the emotions of a person by tracing his/her face and telling the person about how his behaviour is and
+          how can he change it.</p>
+        </div>
+      </div> -->
+      <ul class="emotion-meter">
+        <li v-for="(ratio, mood) in moods">
+          <div class="text">{{ mood }}</div>
+          <div class="meter-container">
+            <div class="meter-outer">
+              <div class="meter-inner" v-bind:style="{ width: (ratio*100) + '%' }"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="nav-link">Analyse Report</div>
   </div>
 
   <script src="scripts/vue.js"></script>
+  <script src="scripts/jquery-ajax.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 

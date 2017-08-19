@@ -7,7 +7,7 @@
 
 body {
   width: 500px;
-  height: 500px;
+  height: 600px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
@@ -93,7 +93,43 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-70%);
+}
+
+.emotion-display .emoticon.on {
+  background: url('../images/happiness.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.anger {
+  background: url('../images/anger.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.contempt {
+  background: url('../images/contempt.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.disgust {
+  background: url('../images/disgust.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.fear {
+  background: url('../images/fear.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.neutral {
+  background: url('../images/neutral.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.sadness {
+  background: url('../images/sadness.svg') center center / contain;
+}
+
+.emotion-display .emoticon.on.surprise {
+  background: url('../images/surprise.svg') center center / contain;
+}
+
+.emotion-display .emoticon.off {
+  background: url('../images/offline.svg') center center / contain;
 }
 
 .emotion-display .description {
@@ -116,4 +152,56 @@ body {
   margin-top: 12px;
   color: #676767;
   font-weight: 300;
+}
+
+.emotion-meter {
+  list-style: none;
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  padding: 16px 0;
+}
+
+.emotion-meter li {
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.emotion-meter li .text {
+  width: 20%;
+  text-align: right;
+  float: left;
+  color: #676767;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.emotion-meter li .meter-container {
+  float: right;
+  width: 80%;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.emotion-meter li .meter-outer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 110px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.emotion-meter li .meter-inner {
+  width: 0;
+  height: 100%;
+  -webkit-transition: width 0.3s linear;
+  -moz-transition: width 0.3s linear;
+  transition: width 0.3s linear;
+  background-color: #7a95e6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 55px;
+  border-bottom-left-radius: 55px;
 }

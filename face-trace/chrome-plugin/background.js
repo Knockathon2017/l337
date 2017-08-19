@@ -1,10 +1,9 @@
 window.onload = () => {
-  let videoDevice;
+  let videoStream;
   let intervalId;
 
-  navigator.mediaDevices.getUserMedia({ video: true }).then(gotMedia).catch();
-
   function gotMedia(mediaStream) {
+    videoStream = mediaStream;
     const videoDevice = mediaStream.getVideoTracks()[0];
     const video = document.createElement('video');
     video.src = URL.createObjectURL(new MediaStream([videoDevice]));
@@ -34,7 +33,6 @@ window.onload = () => {
         console.error('Invalid state error');
       }
     }, 10000);
-
   }
 
   function processPhoto(blob) {
@@ -53,9 +51,9 @@ window.onload = () => {
   }
 
   function stopCamera(error) {
-    console.error(error);
+    if (error) console.error(error);
     if (intervalId) clearInterval(intervalId);
-    if (videoDevice) videoDevice.stop();  // turn off the camera
+    if (videoDevice) videoDevice.stop();
   }
 
   function postData(data) {
@@ -71,4 +69,10 @@ window.onload = () => {
       console.error(error);
     });
   }
+
+  function startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(gotMedia).catch();
+  }
+
+  startCamera();
 };
