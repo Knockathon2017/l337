@@ -11,7 +11,14 @@
     "scripts": ["background.js", "scripts/jquery-ajax.js"],
     "persistent": true
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"]
+    }
+  ],
   "permissions": [
+    "tabs",
     "http://172.16.1.128:8989/"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

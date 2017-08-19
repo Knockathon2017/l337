@@ -17,7 +17,7 @@ const app = new Vue({
 
 $.ajax({
   method: 'GET',
-  url: 'http://172.16.1.128:8989/v1/getTodayMood/diptii86@gmail.com',
+  url: 'http://172.16.1.128:8989/v1/getTodayMood/atmarams@exzeo.com',
 }).done((response) => {
   console.log('Response', response)
   app.moods = response.Moods;
