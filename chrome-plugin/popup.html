@@ -13,7 +13,7 @@
     <div class="content-wrapper">
       <div class="header">
         <h1>Face<span>Trace</span></h1>
-        <div class="date">Today (18 Aug)</div>
+        <div class="date">Today ({{ currentDate }})</div>
         <div class="toggle-switch">
           <div class="text">{{ shouldTrack ? 'ON' : 'OFF' }}</div>
           <label class="switch" >
@@ -22,21 +22,21 @@
           </label>
         </div>
       </div>
-      <div class="emotion-display">
+      <div class="emotion-display" v-if="shouldTrack">
         <div class="emoticon on" v-bind:class="[overallMood]"></div>
         <div class="description">
           <h2>{{ messages[overallMood].title }}</h2>
           <p>{{ messages[overallMood].description }}</p>
         </div>
       </div>
-      <!-- <div class="emotion-display">
+      <div class="emotion-display" v-else>
         <div class="emoticon off"></div>
         <div class="description">
           <p>FaceTrace analyses the emotions of a person by tracing his/her face and telling the person about how his behaviour is and
           how can he change it.</p>
         </div>
-      </div> -->
-      <ul class="emotion-meter">
+      </div>
+      <ul class="emotion-meter" v-if="shouldTrack">
         <li v-for="(ratio, mood) in moods">
           <div class="text">{{ mood }}</div>
           <div class="meter-container">
@@ -47,7 +47,7 @@
         </li>
       </ul>
     </div>
-    <div class="nav-link">Analyse Report</div>
+    <div class="nav-link" v-if="shouldTrack">Analyse Report</div>
   </div>
 
   <script src="scripts/vue.js"></script>

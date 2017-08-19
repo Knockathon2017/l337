@@ -1,3 +1,4 @@
+const dateString = new Date().toString();
 const app = new Vue({
   el: '#face-trace',
   data: {
@@ -40,7 +41,8 @@ const app = new Vue({
         description: 'Let\'s turn that frown upside down.'
       },
       surprise: 0
-    }
+    },
+    currentDate: dateString.slice(4, 11)
   },
   methods: {
     toggleTrack: function() {
