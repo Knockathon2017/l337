@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 import bodyParser from 'body-parser';
+import path from 'path';
 import mongoose from 'mongoose';
 import bluebirdPromise from 'bluebird';
 import routes from './routes/route';
@@ -17,13 +18,15 @@ const app = express();
   });
   console.log('start')
   app.listen(8989, () => {});
-
   app.use(bodyParser.json({
     limit: "500mb",
     verify: (req, res, body) => {
       req.rawBody = body.toString() !== '' ? body.toString() : '{}';
     }
   }));
+  app.set('views',path.join(__dirname,'public/views'));
+  app.set('view engine','ejs');
+  app.use(express.static(path.join(__dirname,'public')));
 
   app.get('/', (req, res) => {
     res.json('face trace service is up now');

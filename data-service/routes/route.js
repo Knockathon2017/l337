@@ -42,6 +42,38 @@ router.get('/getData/:userId/:startDate/:endDate', (request, response) => {
     }
 });
 
+router.get('/getTodayMood/:userId', (request, response) => {
+    
+    try {
+        const userId = request.params.userId;
+        new FaceTrace().getUsesTodayMoodData(userId)
+            .then((traceData) => {
+               console.log('sent success response', { responseBody: traceData });
+                return response.status(200).json(traceData);
+            }).catch((err) => {console.log(err)});
+    } catch (error) {
+       console.log(err);
+    }
+});
+
+router.get('/getDataForSplineChart/:userId/:startDate/:endDate', (request, response) => {
+    
+    try {
+        const userId = request.params.userId;
+        new FaceTrace().getDataForSplineChart(userId,request.params.startDate,request.params.endDate )
+            .then((traceData) => {
+               console.log('sent success response', { responseBody: traceData });
+                return response.status(200).json(traceData);
+            }).catch((err) => {console.log(err)});
+    } catch (error) {
+       console.log(err);
+    }
+});
+
+router.get('/summary',(request,response)=>{
+    return response.render('facetrace');
+});
+
 
 
 
