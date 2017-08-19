@@ -70,6 +70,10 @@ router.get('/getDataForSplineChart/:userId/:startDate/:endDate', (request, respo
     }
 });
 
+router.get('/summary',(request,response)=>{
+    return response.render('facetrace');
+});
+
 
 
 
