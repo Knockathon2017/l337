@@ -1,4 +1,5 @@
 const dateString = new Date().toString();
+const ANALYSIS_BASE_URL = 'http://172.16.1.128:8989';
 const app = new Vue({
   el: '#face-trace',
   data: {
@@ -48,6 +49,12 @@ const app = new Vue({
     toggleTrack: function() {
       chrome.runtime.sendMessage({
         type: this.shouldTrack ? 'startCamera' : 'stopCamera'
+      });
+    },
+    openAnanlysisPage() {
+      const analysisUrl = `${ANALYSIS_BASE_URL}?overallMood=${this.overallMood}`;
+      chrome.tabs.create({
+        url: analysisUrl
       });
     }
   }
